@@ -1,0 +1,19 @@
+On Raspberry Pi run:
+$python temperature.py.
+This starts to read temperature sensor and writes the values to a file
+
+At the gateway, start the server code that waits for incoming connections:
+$/gtk-server1.c 
+
+In another terminal at raspberry pi run :
+$./rfcomm-client1.c
+This will start the Bluetooth client which sends the temperature data from temperature sensor to gateway.
+
+When the connection is made between client and server the smart node can be monitored and the data transfer takes place between
+server and client
+
+In another terminal at gateway run:
+$python parseSample.py
+This reads the temperature sensor values at the gateway and uploads it to the parse server which can be accessed using a remote device
+like iPad 
+

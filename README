@@ -1,0 +1,41 @@
+Dependencies required to run the demo are as follows:
+
+Ubuntu 14.04 installed on laptop acting as gateway
+GTK+2.0 installed on Ubuntu 14.04
+Bluez bluetooth stack installed on Ubuntu 14.04
+Bluez bluetooth stack installed on Raspbian for Raspberry Pi
+Parsypy server installed on Ubuntu 14.04
+
+Steps to install dependencies:
+
+1) To install GTK+2.0 on Ubuntu 14.04
+
+$sudo apt-get install libgtk2.0-dev
+$sudo apt-get install libgtk2.0
+
+2) To install Bluez stack on Ubuntu 14.04 and Raspberry Pi
+
+$sudo apt-get install bluez python-gobject python-dbus
+
+3) To install Parsepy server on Ubuntu 14.04
+
+$curl -s https://www.parse.com/downloads/cloud_code/installer.sh | sudo /bin/bash
+
+$parse configure accountkey -d
+
+(Note : You will require an account key at this point or need to setup an account key)
+
+$parse new
+
+cd ${CUR_DIR}/${CODE_DIR}
+    parse deploy  
+
+Steps to Compile the code:
+
+To compile server on Ubuntu 14.04 on gateway:
+
+gcc -Wall gtk-server.c -o gtk-server1.out -lbluetooth `pkg-config --cflags --libs gtk+-2.0`
+
+To compile client on Raspbian on Raspberry Pi:
+
+gcc -Wall rfcomm-client1.c -o rfcomm-client1.out -lbluetooth `pkg-config --cflags --libs gtk+-2.0`
